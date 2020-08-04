@@ -2,5 +2,10 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-
+    fetch(PRODUCTS_URL)
+    .then( respuesta=>respuesta.json()) 
+    .then(datos=> { 
+        //document.getElementById('ciudad').innerHTML= datos.name + ", " + datos.sys.country; 
+           })
+    .catch( error => alert("Hubo un error: " + error));
 });
