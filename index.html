@@ -1,55 +1,131 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <title>eMercado - Todo lo que busques está aquí</title>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <title>eMercado - Todo lo que busques está aquí</title>
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.3/examples/album/"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <style>
-    html, body{
-      height: 100%;
-    }
+      body {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
 
-    body {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color: #f5f5f5;
-    }
+      .signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+        background-color: white;
+        border-radius: 10%;
+        align-items: center;
+        border: 10 px solid transparent;
+        border-image: linear-gradient(to bottom, grey, darkgrey));
+      }
 
-    .signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: auto;
-    }
-  </style>
-</head>
+      .etiqueta{
+        color: #4b4b4d;
+        
+      }
 
-<body class="text-center" style="background-image: linear-gradient(to right, #ecedee, white)">
-  <img src="img/login.png">
-  <div class="signin">
-    <h1>Inicio de sesión</h1>
-      <br>
-    <form method="POST">
-      <p><input name="nombre" type="text" placeholder="Nombre de usuario o mail" required></p>
-      <p><input name="password" type="password" placeholder="Contraseña" required></p>
-      <p><input name="enviar" type="submit" value="Ingresar" onclick="location.href='homepage.html'"></p>
-    </form>
-  </div>
+      .textimput{
+        background-color:#ecedee;
+        border-style: hidden;
+        padding: 5px;
+        text-align: center;
+        border-radius: 35px;
+      }
 
-  <script src="js/init.js"></script>
-  <script src="js/login.js"></script>
-</body>
+      .submit{
+        background-color: #ff006d;
+        width: 150px;
+        color: white;
+        font-weight: bold;
+        border-radius: 35px;
+        border-style: hidden;
+        padding: 5px;
+        margin: 10px;
+      }
+
+      .header{
+        color:#4b4b4d;
+        margin: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body
+    class="text-center"
+    style="background-image: linear-gradient(to right, #ecedee, white);"
+  >
+    <img src="img/login.png" />
+    <div class="signin">
+      <h2 class="header">Inicio de sesión</h1>
+      <br />
+      <form method="POST">
+        <p>
+            <label class="etiqueta"> 
+                Nombre de usuario
+            </label><br>
+            <input
+            class="textimput"
+            name="nombre"
+            type="text"
+            required
+          />
+          
+        </p>
+        <p>
+          <label class="etiqueta"> 
+            Contraseña
+          </label><br>
+          <input
+            class="textimput"
+            name="password"
+            type="password"
+            required
+          />
+        </p>
+        <p>
+          <input
+            class="submit"
+            name="enviar"
+            type="submit"
+            value="INGRESAR"
+            onclick="location.href='homepage.html'"
+          />
+        </p>
+      </form>
+    </div>
+
+    <script src="js/init.js"></script>
+    <script src="js/login.js"></script>
+  </body>
 </html>
