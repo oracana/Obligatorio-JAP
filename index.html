@@ -21,52 +21,58 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
     <link href="css/login.css" rel="stylesheet" />
   </head>
 
   <body
     class="text-center"
-    style="background-image: linear-gradient(to right, #ecedee, white);"
+    style="background-image: url(img/fondologin3.png); background-size: cover;"
   >
-    <img src="img/login.png" />
-    <div class="signin">
-      <h2 class="header">Inicio de sesión</h1>
+  
+    <div class="animate__animated animate__fadeInDown" id="signin">
+      <img src="img/login2.png" width="450px"/>
       <br />
+      <br />
+      <h2 class="header">Inicio de sesión</h2>
       <div>
         <p>
-            <label class="etiqueta"> 
-                Nombre de usuario
-            </label><br>
-            <div class="textimput"> <img src="img/user.png" height="20px" width="20px">
             <input
+            id="user"
             class="textimput"
-            name="nombre"
+            name="user"
             type="text"
-            required
-          /></div>
-          
+            placeholder="Nombre de usuario"
+          />
         </p>
         <p>
-          <label class="etiqueta"> 
-            Contraseña
-          </label><br>
-          <div class="textimput"> <img src="img/pass.png" height="20px" width="20px"> 
           <input
+            id="pass"
             class="textimput"
-            name="password"
+            name="pass"
             type="password"
-          /></div>
+            placeholder="Contraseña"
+          />
         </p>
+        <br>
         <p>
           <input
             class="submit"
             name="enviar"
             type="submit"
             value="INGRESAR"
-            onclick="location.href='home.html'"
+            onclick="login()"
           />
         </p>
-      </div>
+        <br>
+        <small><a href="#">Recordar contraseña</a></small><br>
+        <small>¿No tienes una cuenta?
+          <a href="#">Regístrate</a></small>
+        </div>
+        
     </div>
 
     <script src="js/init.js"></script>

@@ -4,3 +4,13 @@
 document.addEventListener("DOMContentLoaded", function(e){
 
 });
+
+function login(){ 
+    var usuario=document.getElementById("user").value; 
+    var password=document.getElementById("pass").value; 
+    if (usuario=="" || password=="") { 
+    alert("Por favor, ingrese un nombre de usuario y contraseña válidos."); 
+    } else{
+        location.href="home.html";
+    }
+    }; 
