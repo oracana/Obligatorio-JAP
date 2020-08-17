@@ -11,6 +11,14 @@ function login(){
     if (usuario=="" || password=="") { 
     alert("Por favor, ingrese un nombre de usuario y contraseña válidos."); 
     } else{
+        localStorage.setItem("usuario", usuario);
         location.href="home.html";
     }
+    
     }; 
+
+    /*function cargarDatos(){
+        var user= localStorage.getItem("usuario");
+        
+        document.getElementById("username").innerHTML = user;
+    }*/

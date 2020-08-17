@@ -101,6 +101,7 @@
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
 
+        localStorage.setItem("usuario", profile.getName());
         location.href="home.html";
       }
     </script>
