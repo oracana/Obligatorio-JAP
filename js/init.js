@@ -53,7 +53,7 @@ function logOut(){
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
-    localStorage.clear("usuario");
+    localStorage.clear();
 
   location.href="index.html";
 };
