@@ -45,6 +45,7 @@ function logOut(){
   auth2.signOut().then(function () {
     console.log('User signed out.');
   });
+  auth2.disconnect();
   localStorage.clear();
 
 location.href="index.html";
