@@ -123,8 +123,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
 
-        minCount = undefined;
-        maxCount = undefined;
+        minCost = undefined;
+        maxCost = undefined;
 
         showCategoriesList();
     });
