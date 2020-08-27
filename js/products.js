@@ -1,9 +1,3 @@
-//consigna para la entrega 2: 
-// a: aplicar un filtro para un rango de precios definido
-// b: ordenar el listado de productos: ascendente y descendente en función de su precio y descendente en función de relevancia.
-
-
-
 const ORDER_ASC_BY_COST = "Precio ascendente";
 const ORDER_DESC_BY_COST = "Precio descendente";
 const ORDER_BY_SOLD_COUNT = "Relevancia";
@@ -12,6 +6,8 @@ var currentSortCriteria = undefined;
 var minCost = undefined;
 var maxCost = undefined;
 var productsArray = [];
+var busqueda = undefined; //crea una variable que va a contener el valor de la búsqueda ingresada
+
 
 //funcion para ordenar los productos
 function sortCategories(criteria, array){
@@ -49,6 +45,7 @@ function sortCategories(criteria, array){
     return result;
 }
 
+
 //mostrar las categorías
 function showCategoriesList(){
 
@@ -56,8 +53,14 @@ function showCategoriesList(){
     for(let i = 0; i < currentProductsArray.length; i++){
         let product = currentProductsArray[i];
 
-        if (((minCost == undefined) || (minCost != undefined && parseInt(product.cost) >= minCost)) &&
-            ((maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost))){
+        let nombre = product.name.toLowerCase();
+        let desc = product.description.toLowerCase(); //agregamos dos variables, una del nombre y otra de la descripción de los autos. pasados a minúsculas para poder comparar los strings.
+
+
+        if ((busqueda == undefined) || ((nombre.indexOf(busqueda) !== -1) || (desc.indexOf(busqueda) !== -1)) && // se agregan las condiciones de que o el campo búsqueda esté vacío, o los campos nombre o descripción contengan el texto de búsqueda. (el valor -1 de indexof significa que no está presente)
+            ((minCost == undefined) || (minCost != undefined && parseInt(product.cost) >= minCost)) &&
+            ((maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost))
+            ){
 
         htmlContentToAppend += `
         <a href="product-info.html" class="list-group-item list-group-item-action">
@@ -79,9 +82,14 @@ function showCategoriesList(){
         `
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
-    }
+    } /*else { 
+        document.getElementById("cat-list-container").innerHTML = `<h4 class="mb-1"> Producto no encontrado </h4>` // no pude hacer que el else funcione correctamente.
+    
+    }*/
 }
 }
+
+
 
 function sortAndShowCategories(sortCriteria, productsArray){
     currentSortCriteria = sortCriteria;
@@ -94,6 +102,13 @@ function sortAndShowCategories(sortCriteria, productsArray){
 
     //Muestro las categorías ordenadas
     showCategoriesList();
+}
+
+//la función buscar atribuye a la variable búsqueda el texto ingresado en el input, para después ejecutar showCategoriesList()
+function buscar(){
+        buscador = document.getElementById("busquedatxt");
+        busqueda = buscador.value.toLowerCase();
+        showCategoriesList();
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -122,12 +137,14 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
+        document.getElementById("busquedatxt").value = "";
 
         minCost = undefined;
         maxCost = undefined;
+        busqueda = undefined;
 
         showCategoriesList();
-    });
+    }); //agrego la limpieza de la búsqueda al botón "limpiar"
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
@@ -151,4 +168,14 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
+
+    //evento para la searchbar, que ejecuta la función buscar() 
+    document.getElementById("busquedatxt").addEventListener("keyup", function(){
+        buscar();
+    });
+    
+    /*document.getElementById("buscar").addEventListener("click", function(){
+        buscar();
+    })*/ //evento para un botón que mantuve inactivo en el html
+    
 });

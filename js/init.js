@@ -45,11 +45,17 @@ function signOut(){
   auth2.signOut().then(function () {
     console.log('User signed out.');
   });
-  auth2.disconnect();
+  //auth2.disconnect();
   localStorage.clear();
 
 location.href="index.html";
 }
+
+/*function onLoad(){
+  gapi.load ('auth2', function(){
+    gapi.auth2.init();
+  });
+}*/
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
