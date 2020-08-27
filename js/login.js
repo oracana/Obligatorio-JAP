@@ -16,9 +16,3 @@ function login(){
     }
     
     }; 
-
-    /*function cargarDatos(){
-        var user= localStorage.getItem("usuario");
-        
-        document.getElementById("username").innerHTML = user;
-    }*/
