@@ -18,9 +18,9 @@ function onSignIn(googleUser) {
 
 
   function signOut(){
-    /*gapi.load('auth2', function() {
+    gapi.load('auth2', function() {
       gapi.auth2.init();
-    });*/
+    });
 
     var auth2 = gapi.auth2.getAuthInstance();
   
