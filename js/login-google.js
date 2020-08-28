@@ -18,9 +18,6 @@ function onSignIn(googleUser) {
 
 
   function signOut(){
-    gapi.load ('auth2', function(){ //esta función carga "gapi". Soluciona el error "gapi is not defined"
-      gapi.auth2.init();
-    });
   
     var auth2 = gapi.auth2.getAuthInstance();
   
@@ -30,4 +27,10 @@ function onSignIn(googleUser) {
   
     localStorage.clear();
     location.href="index.html";
+  }
+
+  function onLoad() {
+    gapi.load('auth2', function() {
+      gapi.auth2.init();
+    });
   }
