@@ -7,7 +7,7 @@ var minCost = undefined;
 var maxCost = undefined;
 var productsArray = [];
 var busqueda = undefined; //crea una variable que va a contener el valor de la búsqueda ingresada
-var resultado = [];
+
 
 //funcion para ordenar los productos
 function sortCategories(criteria, array){
@@ -53,8 +53,13 @@ function showCategoriesList(){
     for(let i = 0; i < currentProductsArray.length; i++){
         let product = currentProductsArray[i];
 
-           if (((minCost == undefined) || (minCost != undefined && parseInt(product.cost) >= minCost)) && 
-           ((maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost))
+        let nombre = product.name.toLowerCase();
+        let desc = product.description.toLowerCase(); //agregamos dos variables, una del nombre y otra de la descripción de los autos. pasados a minúsculas para poder comparar los strings.
+
+
+        if  ((busqueda == undefined) || ((nombre.indexOf(busqueda) !== -1) || (desc.indexOf(busqueda) !== -1)) && // se agregan las condiciones de que o el campo búsqueda esté vacío, o los campos nombre o descripción contengan el texto de búsqueda. (el valor -1 de indexof significa que no está presente)
+            ((minCost == undefined) || (minCost != undefined && parseInt(product.cost) >= minCost)) &&
+            ((maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost))
             ){
 
         htmlContentToAppend += `
@@ -77,8 +82,14 @@ function showCategoriesList(){
         `
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
-    } 
-}
+    } /*else if ((nombre.indexOf(busqueda) == -1) || (desc.indexOf(busqueda) == -1)){
+        document.getElementById("cat-list-container").innerHTML = `<h4 class="mb-1"> Producto no encontrado </h4>` // no pude hacer que el else funcione correctamente.
+    }*/
+    }
+    /*if((nombre.indexOf(busqueda) == -1) || (desc.indexOf(busqueda) == -1)){
+        document.getElementById("cat-list-container").innerHTML = `<h4 class="mb-1"> Producto no encontrado </h4>` // no pude hacer que el else funcione correctamente.
+ 
+}*/
 }
 
 
@@ -96,54 +107,13 @@ function sortAndShowCategories(sortCriteria, productsArray){
     showCategoriesList();
 }
 
-//la función buscar atribuye a la variable búsqueda el texto ingresado en el input, para después mostrar un nuevo array con los resultados de la búsqueda
+//la función buscar atribuye a la variable búsqueda el texto ingresado en el input, para después ejecutar showCategoriesList()
 function buscar(){
         buscador = document.getElementById("busquedatxt");
-        busqueda = buscador.value.toLowerCase(); //se pasa a minúsculas todo texto, para la comparación
-        for(let i = 0; i < currentProductsArray.length; i++){
-            let product = currentProductsArray[i];
-            let nombre = product.name.toLowerCase();
-            let desc = product.description.toLowerCase(); 
-    
-            if  ((nombre.indexOf(busqueda) !== -1) || (desc.indexOf(busqueda) !== -1)){
-                resultado.push(product);
-            }
-        } 
-    
-    let htmlContentToAppend = ""; //con lo que sigue, se insertan en el html los resultados de la búsqueda.
-    for(let i = 0; i < resultado.length; i++){
-    let product = resultado[i];
+        busqueda = buscador.value.toLowerCase();
 
-    if (((minCost == undefined) || (minCost != undefined && parseInt(product.cost) >= minCost)) && 
-       ((maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost))){
-
-    htmlContentToAppend += `
-    <a href="product-info.html" class="list-group-item list-group-item-action">
-    <div class="list-group-item list-group-item-action">
-        <div class="row">
-            <div class="col-3">
-                <img src="` + product.imgSrc + `" alt="` + product.desc + `" class="img-thumbnail">
-            </div>
-            <div class="col">
-                <div class="d-flex w-100 justify-content-between">
-                    <h4 class="mb-1">`+ product.name + ` - ` + product.cost + ` ` + product.currency + `</h4>
-                    <small class="muted">` + product.soldCount + ` artículos vendidos </small>
-                </div>
-                <p class="mb-1">` + product.description + `</p>
-            </div>
-        </div>
-    </div>
-    </a>
-    `
-
-    document.getElementById("cat-list-container").innerHTML = htmlContentToAppend; 
-        }
-    }
-
-if (resultado.length== 0){ //si la búsqueda no tiene resultados, entonces se muestra el cartel de "producto no encontrado"
-    document.getElementById("cat-list-container").innerHTML = `<h4 class="mb-1"> Producto no encontrado </h4>`;
-} 
-resultado = []; //con esto borramos el array antes de seguir buscando *muy importante. De lo contrario, los resultados siguen agregándose a un mismo array
+        
+        showCategoriesList();
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
