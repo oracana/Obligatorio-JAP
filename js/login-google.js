@@ -25,3 +25,9 @@ function onSignIn(googleUser) {
   
   location.href="index.html";
   }
+
+  function onLoad(){
+  gapi.load ('auth2', function(){
+    gapi.auth2.init();
+  });
+}
