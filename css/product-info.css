@@ -21,14 +21,15 @@ input[type="radio"] {
   .images{
     box-sizing: border-box;
   }
-
+  
   .gallery{
-      width: 20%;
-      margin:auto;
-     list-style: none;
-     padding: 15px;
-     box-sizing: border-box;
-     float:left;
+    justify-content: space-around;
+    display:flex;
+    width: 100%;
+    margin:auto;
+    list-style: none;
+    padding: 15px;
+    box-sizing: border-box;
   }
 
 .gallery li{
@@ -41,15 +42,11 @@ input[type="radio"] {
   }
 
   #mainImage{
+      box-sizing: content-box;
       margin:auto;
-      list-style: none;
       height: 100%;
       padding: 20px;
       
-  }
-
-  #mainImage img{
-    height: 520px;
   }
   
   .card:hover{

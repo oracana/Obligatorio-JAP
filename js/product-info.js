@@ -72,7 +72,13 @@ function mostrarImg(imagenes){
     }
 
     document.getElementById("productImagesGallery").innerHTML = galeria;
-    document.getElementById("mainImage").innerHTML = `<img src="`+ imagenes[0] + `">`;
+    //document.getElementById("mainImage").innerHTML = `<img src="`+ imagenes[0] + `">`;
+}
+
+function mostrarCarousel(imgs){
+    for(i=0; i<imgs.length; i++){
+        document.getElementById("item"+i).src=imgs[i];
+    }
 }
 
 //productos relacionados
@@ -138,9 +144,9 @@ document.addEventListener("DOMContentLoaded", function(e){
             productCategoryHTML.innerHTML = `<a href="category-info.html">` + product.category + `</a>`;
             productCostHTML.innerHTML = product.cost;
             productCurrencyHTML.innerHTML = product.currency;
-
             //Muestro las imagenes en forma de galería
             mostrarImg(product.images);
+            mostrarCarousel(product.images);
             mostrarRelacionados(product.relatedProducts);
 
         }
