@@ -1,0 +1,57 @@
+input[type="radio"] {
+    display: none;
+  }
+
+  .estrellita {
+    color:orange;
+  }
+
+  .puntuacion label {
+  float: right;
+  color: #c1b8b8;
+  font-size: 30px; 
+  }
+
+  .puntuacion label:hover,
+  .puntuacion label:hover ~ label,
+  .puntuacion input:checked ~ label {
+  color:orange;
+  }
+
+  .images{
+    box-sizing: border-box;
+  }
+
+  .gallery{
+      width: 20%;
+      margin:auto;
+     list-style: none;
+     padding: 15px;
+     box-sizing: border-box;
+     float:left;
+  }
+
+.gallery li{
+    margin: 5px;
+}
+
+  .gallery img {
+    width: 150 px;
+    height: 100px;
+  }
+
+  #mainImage{
+      margin:auto;
+      list-style: none;
+      height: 100%;
+      padding: 20px;
+      
+  }
+
+  #mainImage img{
+    height: 520px;
+  }
+  
+  .card:hover{
+    box-shadow: 2px 2px 10px lightgray;
+  }
