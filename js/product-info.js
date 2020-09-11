@@ -44,7 +44,7 @@ function mostrar(comentarios){
 
         for(j=0; j<comentario.score; j++){
             estrellitas += `<input id="r${j}" type="radio" name="puntos" value="1" checked></input> 
-            <label class="estrellita" for="r${j}">★</label>`;
+            <label class="estrellita" for="r${j}"><i class="fas fa-star"></i></label>`;
         }
 
     commentList+= `<dt>` + comentario.user + `</dt>

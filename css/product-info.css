@@ -9,7 +9,6 @@ input[type="radio"] {
   .puntuacion label {
   float: right;
   color: #c1b8b8;
-  font-size: 30px; 
   }
 
   .puntuacion label:hover,
