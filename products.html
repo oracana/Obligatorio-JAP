@@ -47,17 +47,15 @@
     <div class="container">
       <div class="row">
         <div class="col text-right">
-          <div style="float: left;">
-            <!--<button id="buscar" class="btn btn-light"><img src="img/lupa.png" width="30px"></button> Había creado este botón para hacer la búsqueda manual, pero perdió sentido con el addEventListener-->
-          </div>
           <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons" style="width: 100%">
             <input class="form-control" type="search" id="busquedatxt" name="busquedatxt"
               placeholder="Buscar en el listado de productos" style="width: 50%;">
             <label class="btn btn-light active" id="sortAsc">
-              <input type="radio" name="options" autocomplete="off" checked>Precio ascendente
+              <input type="radio" name="options" autocomplete="off" checked><i class="fas fa-dollar-sign"></i><i
+              class="fas fa-sort-amount-down mr-1"></i>Precio ascendente
             </label>
             <label class="btn btn-light" id="sortDesc">
-              <input type="radio" name="options" autocomplete="off">Precio descendente
+              <input type="radio" name="options" autocomplete="off"><i class="fas fa-dollar-sign"></i><i class="fas fa-sort-amount-up"></i>Precio descendente
             </label>
             <label class="btn btn-light" id="sortByCount">
               <input type="radio" name="options" autocomplete="off"><i

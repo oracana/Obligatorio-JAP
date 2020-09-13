@@ -207,8 +207,4 @@ document.addEventListener("DOMContentLoaded", function(e){
     //evento para la searchbar, que ejecuta la función buscar() 
     document.getElementById("busquedatxt").addEventListener("keyup", buscar);
     
-    /*document.getElementById("buscar").addEventListener("click", function(){
-        buscar();
-    })*/ //evento para un botón que mantuve inactivo en el html
-    
 });

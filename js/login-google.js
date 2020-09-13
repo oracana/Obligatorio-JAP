@@ -13,19 +13,29 @@ function onSignIn(googleUser) {
     console.log("ID Token: " + id_token);
 
     localStorage.setItem("usuario", profile.getName());
+    //agrego este elemento en el localsrorage, para que no de errores la página al momento de cerrar sesión cuando el usuario de google no está loggeado
+    localStorage.setItem('statusGoogle', 'loggedIn'); 
     location.href="home.html";
   }
 
 
   function signOut(){
-    var auth2 = gapi.auth2.getAuthInstance();
-  
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  
-    localStorage.clear();
-    location.href="index.html";
+    if(localStorage.getItem('statusGoogle') != null){
+
+      var auth2 = gapi.auth2.getAuthInstance();
+      
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    
+      localStorage.clear();
+      location.href="index.html";
+
+      //si no está loggeado con google, solo se borra el localstorage y vuelve al login.
+      } else{
+        localStorage.clear();
+        location.href="index.html";
+      }
   }
 
   function onLoad() {
