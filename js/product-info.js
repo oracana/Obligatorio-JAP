@@ -153,9 +153,3 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 });
 
-//mostrar imagenes en grande en la galeria
-
-// document.querySelector("#productImagesGallery li.item img").addEventListener("mouseover",function(){
-//     let imagen = document.querySelector("#productImagesGallery li.item img").src
-//     document.getElementById("mainImage").innerHTML= `<img src="${imagen}">`;
-// });
