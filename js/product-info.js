@@ -94,7 +94,7 @@ function mostrarRelacionados(array){
               <img class="card-img-top" src="${auto.imgSrc}" alt="${auto.name}">
               <div class="card-body">
                 <h3 class="card-title">${auto.name}</h3>
-                <h4>${auto.currency} ${auto.cost}</h4>
+                <h4>${auto.cost} ${auto.currency}</h4>
                 <p class="card-text">${auto.description}</p>
                 <p class="card-text"><small class="text-muted">Vendidos: ${auto.soldCount}</small></p>
                 <a href="product-info.html" class="btn btn-primary">Ver producto</a>
