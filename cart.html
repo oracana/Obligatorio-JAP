@@ -25,7 +25,7 @@
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
-      }
+      } 
     }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -60,12 +60,28 @@
     </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega:
-        25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <div class="text-center p-4">
+      <h2>Carrito de compras</h2>
+      <p class="lead">Actualmente tu carrito cuenta con <badge class="badge badge-pill badge-danger" id="cartCount"></badge> elementos.</p>
+    </div>
+    <div class="container">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Cantidad</th>
+            <th scope="col"></th>
+            <th scope="col">Artículo</th>
+            <th scope="col">Precio unitario</th>
+            <th scope="col">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="cartList">
+        </tbody>
+        <tfoot>
+          <th class="align-middle" scope="row" colspan="4" style="text-align: right;">Total: </th>
+          <td class="align-middle" id="totalCost"></td>
+        </tfoot>
+      </table>
     </div>
   </div>
   <div id="spinner-wrapper">
