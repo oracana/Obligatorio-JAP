@@ -1,3 +1,13 @@
 #totales{
     right: 10em;
 }
+
+.japbutton{
+    color: white;
+    background-color: #f2267b;
+}
+
+.japbutton:hover{
+    color: white;
+    background-color: #d61c6c;
+}

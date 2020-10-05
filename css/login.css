@@ -35,11 +35,11 @@ html,
       }
 
       a:hover{
-          color: #f2267b;
+          color: #d61c6c;
       }
 
       .submit{
-        background-color: #D61C6C;
+        background-color: #f2267b;
         width: 150px;
         color: white;
         font-weight: bold;
@@ -50,7 +50,7 @@ html,
       }
 
       .submit:hover{
-        background-color: #f2267b;
+        background-color: #d61c6c;
       }
 
       .header{
