@@ -46,6 +46,7 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="css/cart.css">
   <!-- Elementos necesarios para el logout de google -->
   <meta name="google-signin-client_id"
     content="856555132004-cs2kt6m5g1g9p8gauc4ij2ikmoug5fn4.apps.googleusercontent.com">
@@ -78,27 +79,88 @@
   <div class="container p-5">
     <div class="text-center p-4">
       <h2>Carrito de compras</h2>
-      <p class="lead">Actualmente tu carrito cuenta con <badge class="badge badge-pill badge-danger" id="cartCount">
-        </badge> artículos.</p>
+        <br>
+        <img src="/img/divider.png" style="width: 100%;">
     </div>
 
+    <!-- Lista de artículos -->
+
     <div class="row justify-content-center">
+
       <div class="col-9">
+        <div class="py-5">
+        <h4>Artículos (<span id="cartCount"></span>)</h4>
         <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Artículo</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Precio unitario</th>
-            </tr>
-          </thead>
           <tbody id="cartList">
           </tbody>
         </table>
+        <hr>
+
+      </div>
+
+        <!-- Opciones de envío -->
+        <hr>
+        <div class="py-5 mb-3">
+        <h4 id="opcEnvio">Opciones de envío</h4>
+
+        <fieldset class="form-group">
+          <label class="form-check-label">Dirección</label>
+          <br>
+          <div class="form-group row">
+            <div class="col-5">
+              <input type="text" class="form-control" placeholder="Calle" name="dirCalle" id="dirCalle" required>
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Número de puerta" name="dirNum" id="dirNum" required>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Esquina" name="dirEsq" id="dirEsq" required>
+            </div>
+          </div>
+
+          <br>
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Tipo de envío</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio1" value="option1">
+                <label class="form-check-label" for="tipoEnvio1">
+                  Premium (2-5 días) <br>
+                  <small class="text-muted"> Costo del 15% sobre el subtotal.</small>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio2" value="option2">
+                <label class="form-check-label" for="tipoEnvio2">
+                  Express (5-8 días) <br>
+                  <small class="text-muted"> Costo del 7% sobre el subtotal.</small>
+                </label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio3" value="option3">
+                <label class="form-check-label" for="tipoEnvio3">
+                  Standard (12 a 15 días) <br>
+                  <small class="text-muted"> Costo del 5% sobre el subtotal.</small>
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        </div>
+
+        <!-- Grupo de botones -->
+        <div class="btn-group btn-block" role="group" aria-label="Button group">
+          <button type="button" class="btn btn-primary" onclick="location.href='/products.html'">Seguir comprando</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPago">Seleccionar método de pago</button>
+        </div>
       </div>
 
       <div class="col-3">
+      </div>
+
+      <!-- Totales flotantes a la derecha  -->
+      <div id="totales" class="col-3 position-fixed py-5">
+        <h4>Costos</h4>
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
@@ -119,57 +181,32 @@
 
     </div>
 
-    <div class="container p-5">
-      <h4>Opciones de envío</h4>
-
-      <fieldset class="form-group">
-        <label class="form-check-label">Dirección</label>
-        <br>
-        <div class="form-group row">
-          <div class="col-5">
-            <input type="text" class="form-control" placeholder="Calle">
+    <!-- Modal de pago -->
+    <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tituloModal">Método de pago</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Número de puerta">
+          <div class="modal-body">
+            ...
           </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Esquina">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Finalizar compra</button>
           </div>
-        </div>
-
-        <div class="row">
-          <legend class="col-form-label col-sm-2 pt-0">Tipo de envío</legend>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio1" value="option1">
-              <label class="form-check-label" for="tipoEnvio1">
-                Premium (2-5 días) <br>
-                <span class="text-muted"> Costo del 15% sobre el subtotal.</span>
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio2" value="option2">
-              <label class="form-check-label" for="tipoEnvio2">
-                Express (5-8 días) <br>
-                <span class="text-muted"> Costo del 7% sobre el subtotal.</span>
-              </label>
-            </div>
-            <div class="form-check disabled">
-              <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio3" value="option3">
-              <label class="form-check-label" for="tipoEnvio3">
-                Standard (12 a 15 días) <br>
-                <span class="text-muted"> Costo del 5% sobre el subtotal.</span>
-              </label>
-            </div>
-          </div>
-        </div>
-      </fieldset>
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Sign in</button>
         </div>
       </div>
     </div>
+
+
+
+
+
+
 
     <div id="spinner-wrapper">
       <div class="lds-ring">
