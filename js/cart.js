@@ -4,11 +4,20 @@ var articles = [];
 //función para mostrar los elementos del carrito
 function showCart(array) {
     let html = ``;
+
+    if(array.length == 0){
+        html = `
+        <tr>
+            <td class="align-middle align-center" colspan="6" style="text-align:center;"><p class="align-middle alert-warning py-3 mt-3">El carrito está vacío</p></td>
+        </tr>
+        `;
+    } else{
     for (i = 0; i < array.length; i++) {
         article = array[i];
+
         html += `
         <tr>
-        <th class="align-middle align-center" scope="row"><img style='height:7em' src='${article.src}' alt='${article.src}' class="img-thumbnail"></th>
+        <th class="align-middle align-center" scope="row"><img style='max-height:7em;' src='${article.src}' alt='${article.src}' class="img-thumbnail"></th>
         <td class="align-middle">${article.name}</td>
         <td class="align-middle">
         <div>
@@ -23,30 +32,33 @@ function showCart(array) {
                     </div>   
   </td>
   <td class="align-middle">${article.unitCost} ${article.currency}</td>
+  <td class="align-middle" id="partialSub${i}"></td>
+  <td class="align-middle"><i class="far fa-trash-alt trash" onclick="articles.splice(${i},1); showCart(articles); showTotal(articles)"></i></td>
   </tr>
   `;
     }
-
+}
     document.getElementById("cartList").innerHTML = html;
 }
 
 function showTotal(array) {
     var subtotal = 0;
     var genCount = 0;
+    var partialSubtotal = 0;
 
     for (i = 0; i < array.length; i++) {
         article = array[i];
-        let counterID = "contador" + i;
-        let counter = document.getElementById(counterID).value;
-
+        let counter = document.getElementById("contador" + i).value;
         genCount += parseInt(counter);
 
         if (article.currency == "UYU") {
-            subtotal += article.unitCost * counter / 40;
+            partialSubtotal = article.unitCost * counter / 40;
         } else if (article.currency == "USD") {
-            subtotal += article.unitCost * counter;
+            partialSubtotal = article.unitCost * counter;
         }
 
+        subtotal += partialSubtotal;
+        document.getElementById("partialSub" + i).innerHTML = partialSubtotal + ` USD`;
     }
     var total = subtotal;
 
@@ -56,8 +68,9 @@ function showTotal(array) {
 
     document.getElementById("cartCount").innerHTML = genCount;
     document.getElementById("envio").innerHTML = (subtotal * shipping).toFixed(2) + ` USD`
-    document.getElementById("totalCost").innerHTML = total + ` USD`;
-    document.getElementById("subtot").innerHTML = subtotal + ` USD`;
+    document.getElementById("totalCost").innerHTML = (total).toFixed(2) + ` USD`;
+    document.getElementById("subtot").innerHTML = (subtotal).toFixed(2) + ` USD`;
+    
 }
 
 //función para chequear que la información de compra no esté vacía, para validarla.
