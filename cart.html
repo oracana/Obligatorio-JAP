@@ -79,8 +79,8 @@
   <div class="container p-5">
     <div class="text-center p-4">
       <h2>Carrito de compras</h2>
-        <br>
-        <img src="./img/divider.png" style="width: 100%;">
+      <br>
+      <img src="./img/divider.png" style="width: 100%;">
     </div>
 
     <!-- Lista de artículos -->
@@ -89,79 +89,101 @@
 
       <div class="col-8">
         <div class="py-5">
-        <h4>Artículos (<span id="cartCount"></span>)</h4>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col" colspan="2">Artículo</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Precio unitario</th>
-              <th scope="col">Subtotal</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody id="cartList">
-          </tbody>
-        </table>
-        <hr>
+          <h4>Artículos (<span id="cartCount"></span>)</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" colspan="2">Artículo</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio unitario</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="cartList">
+            </tbody>
+          </table>
+          <hr>
 
-      </div>
+        </div>
 
         <!-- Opciones de envío -->
         <hr>
         <div class="py-5 mb3">
-        <h4 id="opcEnvio">Opciones de envío</h4>
+          <h4 id="opcEnvio">Opciones de envío</h4>
 
-        <fieldset class="form-group">
-          <label class="form-check-label">Dirección</label>
-          <br>
-          <div class="form-group row">
-            <div class="col-5">
-              <input type="text" class="form-control" placeholder="Calle" name="dirCalle" id="dirCalle" required>
+          <fieldset class="form-group">
+            <label class="form-check-label">Dirección</label>
+            <br>
+            <div class="form-group row">
+              <div class="col-4">
+                <select class="form-control" name="paises" id="paises"></select>
+              </div>
+              <div class="col-4">
+                <input type="text" class="form-control" name="dpto" id="dpto" placeholder="Departamento">
+              </div>
+              <div class="col-4">
+                <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad">
+              </div>
             </div>
-            <div class="col">
-              <input type="number" class="form-control" placeholder="Número de puerta" name="dirNum" id="dirNum" required>
+            <div class="form-group row">
+              <div class="col-5">
+                <input type="text" class="form-control" placeholder="Calle" name="dirCalle" id="dirCalle" required>
+              </div>
+              <div class="col">
+                <input type="number" class="form-control" placeholder="Número de puerta" name="dirNum" id="dirNum"
+                  required>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Esquina" name="dirEsq" id="dirEsq" required>
+              </div>
             </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Esquina" name="dirEsq" id="dirEsq" required>
-            </div>
-          </div>
 
-          <br>
-          <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Tipo de envío</legend>
-            <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio1" value="option1">
-                <label class="form-check-label" for="tipoEnvio1">
-                  Premium (2-5 días) <br>
-                  <small class="text-muted"> Costo del 15% sobre el subtotal.</small>
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio2" value="option2">
-                <label class="form-check-label" for="tipoEnvio2">
-                  Express (5-8 días) <br>
-                  <small class="text-muted"> Costo del 7% sobre el subtotal.</small>
-                </label>
-              </div>
-              <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio3" value="option3">
-                <label class="form-check-label" for="tipoEnvio3">
-                  Standard (12 a 15 días) <br>
-                  <small class="text-muted"> Costo del 5% sobre el subtotal.</small>
-                </label>
+            <br>
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">Tipo de envío</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio1" value="option1">
+                  <label class="form-check-label" for="tipoEnvio1">
+                    Premium (2-5 días) <br>
+                    <small class="text-muted"> Costo del 15% sobre el subtotal.</small>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio2" value="option2">
+                  <label class="form-check-label" for="tipoEnvio2">
+                    Express (5-8 días) <br>
+                    <small class="text-muted"> Costo del 7% sobre el subtotal.</small>
+                  </label>
+                </div>
+                <div class="form-check disabled">
+                  <input class="form-check-input" type="radio" name="tipoEnvio" id="tipoEnvio3" value="option3">
+                  <label class="form-check-label" for="tipoEnvio3">
+                    Standard (12 a 15 días) <br>
+                    <small class="text-muted"> Costo del 5% sobre el subtotal.</small>
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-        </fieldset>
+          </fieldset>
+        </div>
+
+        <!-- Forma de pago -->
+        <hr>
+        <div class="py-5 mb3">
+          <h4 id="opcEnvio">Forma de pago</h4>
+          <p class="text-muted" id="formaPago">Aún no ha seleccionado una forma de pago.</p>
+          <button class="btn japbutton" data-toggle="modal" data-target="#modalPago">Seleccionar</button>
         </div>
 
         <!-- Grupo de botones -->
         <div class="btn-group btn-block" role="group" aria-label="Button group">
-          <button type="button" class="btn japbutton" onclick="location.href='./products.html'">Seguir comprando</button>
-          <button type="button" class="btn japbutton" data-toggle="modal" data-target="#modalPago">Seleccionar método de pago</button>
+          <button type="button" class="btn japbutton" onclick="location.href='./products.html'">Seguir
+            comprando</button>
+          <button type="button" class="btn japbutton" onclick="location.href='#'">Finalizar compra</button>
         </div>
+
       </div>
 
       <div class="col-4">
@@ -169,7 +191,16 @@
 
       <!-- Totales flotantes a la derecha  -->
       <div id="totales" class="col-3 position-fixed py-5">
-        <h4>Costos</h4>
+        <h4>Tu pedido</h4>
+
+        <div class="form-row">
+          <label class="text-muted etiqueta-moneda" for="moneda">Mostrar totales en</label>
+            <select class="form-control" name="moneda" id="moneda">
+              <option value="dolares">USD</option>
+              <option value="pesos">UYU</option>
+            </select>
+        </div>
+
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
@@ -201,11 +232,69 @@
             </button>
           </div>
           <div class="modal-body">
-            ...
+
+            <!-- colapsable de bootstrap -->
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link paymode" data-toggle="collapse" data-target="#collapseOne"
+                      aria-expanded="false" aria-controls="collapseOne">
+                      Tarjeta de crédito
+                    </button>
+                  </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <!-- form de tarjeta de crédito -->
+                    <div class="form-row">
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" name="titularTarjeta" id="titularTarjeta"
+                          placeholder="Titular de la tarjeta">
+                      </div>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="number" name="numeroTarjeta" id="numeroTarjeta"
+                          placeholder="Número de la tarjeta">
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                      <div class="col-sm-4 pt-1">
+                        <label for="vencTarjeta"><small>Fecha de vencimiento:</small></label>
+                      </div>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="MM/AA">
+                      </div>
+                      <div class="col-sm-4">
+                        <input type="number" class="form-control" id="cvvTarjeta" placeholder="CVV">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed paymode" data-toggle="collapse" data-target="#collapseTwo"
+                      aria-expanded="false" aria-controls="collapseTwo">
+                      Transferencia bancaria
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    <input class="form-control" type="text" name="titularCuenta" id="titularCuenta"
+                      placeholder="Número de cuenta">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- termina el colapsable -->
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn japbutton">Finalizar compra</button>
+            <button type="button" class="btn japbutton">Guardar</button>
           </div>
         </div>
       </div>

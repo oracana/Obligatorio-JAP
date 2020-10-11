@@ -7,6 +7,7 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/pro
 //const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json"; este es el inicial
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json"; //este link corresponde al carrito de desafiate.
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
+const COUNTRIES_URL = "https://restcountries.eu/rest/v2/all"; //API con paises
 
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";

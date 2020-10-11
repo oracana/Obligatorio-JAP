@@ -15,3 +15,21 @@
 .trash:hover{
     color: #f2267b;
   }
+
+ .paymode {
+     color: black;
+    text-decoration: none !important;
+  } 
+
+ .paymode:hover {
+     color: #d61c6c;
+    text-decoration: none !important;
+  } 
+
+  #moneda {
+      max-width: 6em !important;
+  }
+
+  .etiqueta-moneda {
+      padding: 0.5em;
+  }
