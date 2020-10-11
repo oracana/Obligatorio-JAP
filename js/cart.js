@@ -41,10 +41,11 @@ function showCart(array) {
     document.getElementById("cartList").innerHTML = html;
 }
 
+//mostrando los totales
 function showTotal(array) {
-    var subtotal = 0;
     var genCount = 0;
-    var partialSubtotal = 0;
+    var partialSubtotal = 0; //partialSubtotal solo toma el precio y la cantidad de cada artículo
+    var subtotal = 0;
     var currencySelected = document.getElementById("moneda").value;
 
     for (i = 0; i < array.length; i++) {
@@ -52,7 +53,8 @@ function showTotal(array) {
         let counter = document.getElementById("contador" + i).value;
         genCount += parseInt(counter);
 
-        if (currencySelected == "dolares") {
+        //agrego un condicional para calcular los totales dependiendo de la moneda seleccionada
+        if (currencySelected == "USD") {
             if (article.currency == "UYU") {
                 partialSubtotal = article.unitCost * counter / 40;
             } else if (article.currency == "USD") {
@@ -77,20 +79,14 @@ function showTotal(array) {
     }
 
     document.getElementById("cartCount").innerHTML = genCount;
+    document.getElementById("envio").innerHTML = (subtotal * shipping).toFixed(2) + " " + currencySelected;
+    document.getElementById("totalCost").innerHTML = (total).toFixed(2) + " " + currencySelected;
+    document.getElementById("subtot").innerHTML = (subtotal).toFixed(2) + " " + currencySelected;
 
-    if (currencySelected == "dolares") {
-        document.getElementById("envio").innerHTML = (subtotal * shipping).toFixed(2) + ` USD`;
-        document.getElementById("totalCost").innerHTML = (total).toFixed(2) + ` USD`;
-        document.getElementById("subtot").innerHTML = (subtotal).toFixed(2) + ` USD`;
-    } else {
-        document.getElementById("envio").innerHTML = (subtotal * shipping).toFixed(2) + ` UYU`;
-        document.getElementById("totalCost").innerHTML = (total).toFixed(2) + ` UYU`;
-        document.getElementById("subtot").innerHTML = (subtotal).toFixed(2) + ` UYU`;
-    }
 
 }
 
-//función para chequear que la información de compra no esté vacía, para validarla.
+//función para chequear que la información de compra no esté vacía, para validarla. Aún no está en uso
 function infoCheck() {
     let addrStreet = document.getElementById("dirCalle").value;
     let addrNum = document.getElementById("dirNum").value;
