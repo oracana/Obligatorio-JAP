@@ -77,9 +77,16 @@ function showTotal(array) {
     }
 
     document.getElementById("cartCount").innerHTML = genCount;
-    document.getElementById("envio").innerHTML = (subtotal * shipping).toFixed(2) + ` USD`;
-    document.getElementById("totalCost").innerHTML = (total).toFixed(2) + ` USD`;
-    document.getElementById("subtot").innerHTML = (subtotal).toFixed(2) + ` USD`;
+
+    if (currencySelected == "dolares") {
+        document.getElementById("envio").innerHTML = (subtotal * shipping).toFixed(2) + ` USD`;
+        document.getElementById("totalCost").innerHTML = (total).toFixed(2) + ` USD`;
+        document.getElementById("subtot").innerHTML = (subtotal).toFixed(2) + ` USD`;
+    } else {
+        document.getElementById("envio").innerHTML = (subtotal * shipping).toFixed(2) + ` UYU`;
+        document.getElementById("totalCost").innerHTML = (total).toFixed(2) + ` UYU`;
+        document.getElementById("subtot").innerHTML = (subtotal).toFixed(2) + ` UYU`;
+    }
 
 }
 
@@ -137,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showTotal(articles);
     });
 
-    document.getElementById("moneda").addEventListener("change", function(){
+    document.getElementById("moneda").addEventListener("change", function () {
         showTotal(articles);
     });
 });
