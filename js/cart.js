@@ -1,5 +1,7 @@
 var shipping = 0;
 var articles = [];
+var success = "";
+var cartQuantity = 0;
 
 //función para mostrar los elementos del carrito
 function showCart(array) {
@@ -78,6 +80,10 @@ function showTotal(array) {
         total = subtotal + subtotal * shipping;
     }
 
+    //elementos para el badge
+    localStorage.setItem("cartQuantity", genCount);
+    document.getElementById("cantidadArticulos").innerHTML = genCount;
+
     document.getElementById("cartCount").innerHTML = genCount;
     document.getElementById("envio").innerHTML = (subtotal * shipping).toFixed(2) + " " + currencySelected;
     document.getElementById("totalCost").innerHTML = (total).toFixed(2) + " " + currencySelected;
@@ -92,10 +98,34 @@ function infoCheck() {
     let addrNum = document.getElementById("dirNum").value;
     let addrInt = document.getElementById("dirEsq").value;
 
-    if (addrStreet != 0 && addrNum != 0 && addrInt != 0) {
+    let cardName = document.getElementById("titularTarjeta").value;
+    let cardNumber = document.getElementById("numeroTarjeta").value;
+    let cardExpiration = document.getElementById("vencTarjeta").value;
+    let cardCVV = document.getElementById("cvvTarjeta").value;
+
+    let transfNumber = document.getElementById("transferCuenta").value; 
+
+    if(addrStreet != "" && addrNum != "" && addrInt != "" && (transfNumber != "" || cardName != "" && cardNumber != "" && cardExpiration != "" && cardCVV != "")) {
+        alert(success);
+    } else if (addrStreet == "" && addrNum == "" && addrInt == "") {
         alert("Por favor complete los datos de envío");
-    }
+    } else if(transfNumber == "" || cardName == "" && cardNumber == "" && cardExpiration == "" && cardCVV == ""){
+        alert("Por favor complete la información de pago");
+    } 
 }
+
+// function cardCheck(){
+//     let cardName = document.getElementById("titularTarjeta").value;
+//     let cardNumber = document.getElementById("numeroTarjeta").value;
+//     let cardExpiration = document.getElementById("vencTarjeta").value;
+//     let cardCVV = document.getElementById("cvvTarjeta").value;
+
+//     let transfNumber = document.getElementById("transferCuenta").value; 
+
+//     if(transfNumber == "" || cardName == "" && cardNumber == "" && cardExpiration == "" && cardCVV == ""){
+//         alert("Por favor complete la información de pago");
+//     } 
+// }
 
 
 
@@ -124,6 +154,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 
+    //cargar el mensaje de compra exitosa
+    getJSONData(CART_BUY_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            success = resultObj.data.msg;
+        }
+    });
+
     //cambios en el valor del shipping
     document.getElementById("tipoEnvio1").addEventListener("change", function () {
         shipping = 0.15;
@@ -140,8 +177,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showTotal(articles);
     });
 
+    //evento para la selección de la moneda
     document.getElementById("moneda").addEventListener("change", function () {
         showTotal(articles);
     });
+    
+    //seleccion de metodo de pago
+    document.getElementById("formaDePago1").addEventListener("click", function () {
+        document.getElementById("formaPago").innerHTML = "Tarjeta de crédito";
+    });
+    document.getElementById("formaDePago2").addEventListener("click", function () {
+        document.getElementById("formaPago").innerHTML = "Transferencia bancaria";
+    });
+    
 });
 

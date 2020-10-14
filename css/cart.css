@@ -26,6 +26,17 @@
     text-decoration: none !important;
   } 
 
+  .paymode input[type=radio]{
+      position: absolute;
+      right: 1.5em;
+      top: 1.5em;
+  }
+
+  .paymode input[type=radio]:checked{
+    background: #d61c6c !important;
+    color: #d61c6c !important;
+}
+
   #moneda {
       max-width: 6em !important;
   }

@@ -66,7 +66,7 @@
           <strong id="username"></strong>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button" onclick="location.href='cart.html'">Mi carrito</button>
+          <button class="dropdown-item" type="button" onclick="location.href='cart.html'">Mi carrito <span class="badge badge-pill badge-danger" id="cantidadArticulos"></span></button>
           <button class="dropdown-item" type="button" onclick="location.href='my-profile.html'">Mi perfil</button>
           <div class="dropdown-divider"></div>
           <button class="dropdown-item" type="button" onclick="signOut();">Cerrar sesión</button>
@@ -181,7 +181,7 @@
         <div class="btn-group btn-block" role="group" aria-label="Button group">
           <button type="button" class="btn japbutton" onclick="location.href='./products.html'">Seguir
             comprando</button>
-          <button type="button" class="btn japbutton" onclick="location.href='#'">Finalizar compra</button>
+          <button type="button" class="btn japbutton" onclick="infoCheck()">Finalizar compra</button>
         </div>
 
       </div>
@@ -241,6 +241,7 @@
                     <button class="btn btn-link paymode" data-toggle="collapse" data-target="#collapseOne"
                       aria-expanded="false" aria-controls="collapseOne">
                       Tarjeta de crédito
+                      <input type="radio" name="formaDePago" id="formaDePago1">
                     </button>
                   </h5>
                 </div>
@@ -264,7 +265,7 @@
                         <label for="vencTarjeta"><small>Fecha de vencimiento:</small></label>
                       </div>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" placeholder="MM/AA">
+                        <input type="text" class="form-control" id="vencTarjeta" placeholder="MM/AA">
                       </div>
                       <div class="col-sm-4">
                         <input type="number" class="form-control" id="cvvTarjeta" placeholder="CVV">
@@ -279,12 +280,13 @@
                     <button class="btn btn-link collapsed paymode" data-toggle="collapse" data-target="#collapseTwo"
                       aria-expanded="false" aria-controls="collapseTwo">
                       Transferencia bancaria
+                      <input type="radio" name="formaDePago" id="formaDePago2">
                     </button>
                   </h5>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                   <div class="card-body">
-                    <input class="form-control" type="text" name="titularCuenta" id="titularCuenta"
+                    <input class="form-control" type="text" name="transferCuenta" id="transferCuenta"
                       placeholder="Número de cuenta">
                   </div>
                 </div>
@@ -293,8 +295,8 @@
             <!-- termina el colapsable -->
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn japbutton">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn japbutton" data-dismiss="modal">Guardar</button>
           </div>
         </div>
       </div>

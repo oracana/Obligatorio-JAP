@@ -51,7 +51,7 @@
           <strong id="username"></strong>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button" onclick="location.href='cart.html'">Mi carrito</button>
+          <button class="dropdown-item" type="button" onclick="location.href='cart.html'">Mi carrito <span class="badge badge-pill badge-danger" id="cantidadArticulos"></span></button>
           <button class="dropdown-item" type="button" onclick="location.href='my-profile.html'">Mi perfil</button>
           <div class="dropdown-divider"></div>
           <button class="dropdown-item" type="button" onclick="signOut();">Cerrar sesión</button>
@@ -174,7 +174,7 @@
             </li>
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
-                <h6 class="my-0">P0rcentaje</h6>
+                <h6 class="my-0">Porcentaje</h6>
                 <small class="text-muted">Según el tipo de publicación</small>
               </div>
               <span class="text-muted" id="comissionText">-</span>

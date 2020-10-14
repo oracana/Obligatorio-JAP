@@ -48,4 +48,21 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function(e){
   var user= localStorage.getItem("usuario"); 
   document.getElementById("username").innerHTML = user;
+
+
+  var cartQuant = localStorage.getItem("cartQuantity");
+  if (cartQuant != undefined){
+    document.getElementById("cantidadArticulos").innerHTML = cartQuant;
+  } else {
+    getJSONData(CART_INFO_URL).then(function (resultObj) {
+      if (resultObj.status === "ok") {
+          articles = resultObj.data.articles;
+          var cartQuantities = 0;
+          for(let article of articles){
+            cartQuantities += article.count;
+          }
+          document.getElementById("cantidadArticulos").innerHTML = cartQuantities;
+      }
+  });
+}
 });
