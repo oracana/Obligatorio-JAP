@@ -98,11 +98,8 @@ function showTotal(array) {
 
 //función para validar la compra.
 function mainCheck() {
-    let creditCardSelected = document.getElementById("formaDePago1").checked;
-    let bankTransfSelected = document.getElementById("formaDePago2").checked;
 
     //chequeo de todos los spans con la clase "validacion", vinculados a los input de dirección de envío.
-    //también se incluye la validación asociada a la selección de un método de pago
     for (let i = 0; i < mainValidationSpans.length; i++) {
         let element = mainValidationSpans[i];
 
@@ -110,7 +107,7 @@ function mainCheck() {
         let inputIDValue = document.getElementById(element.id + "-input").value;
         let spanHTML = document.getElementById(element.id);
 
-        if (inputIDValue == "" || inputIDValue == "País" || (creditCardSelected == false && bankTransfSelected == false)) {
+        if (inputIDValue == "" || inputIDValue == "País") {
             inputID.classList.remove("is-valid");
             inputID.classList.add("is-invalid");
             spanHTML.classList.add("invalido");
@@ -123,22 +120,34 @@ function mainCheck() {
         }
     }
 
+    //también se incluye la validación asociada a la selección de un método de pago
+    let creditCardSelected = document.getElementById("formaDePago1").checked;
+    let bankTransfSelected = document.getElementById("formaDePago2").checked;
+    if (creditCardSelected == false && bankTransfSelected == false) {
+        document.getElementById("metodo").classList.remove("valido");
+        document.getElementById("metodo").classList.add("invalido");
+        document.getElementById("metodo").innerHTML = "Debe seleccionar un método de pago <br>";
+    } else {
+        document.getElementById("metodo").classList.remove("invalido");
+        document.getElementById("metodo").classList.add("valido");
+    }
+
     //chequeo de selección de un método de envío
     let shipping1Selected = document.querySelector("#tipoEnvio1").checked;
     let shipping2Selected = document.querySelector("#tipoEnvio2").checked;
     let shipping3Selected = document.querySelector("#tipoEnvio3").checked;
-    if(shipping1Selected == false & shipping2Selected == false & shipping3Selected == false){
+    if (shipping1Selected == false & shipping2Selected == false & shipping3Selected == false) {
         document.getElementById("validacionEnvios").classList.remove("valido");
         document.getElementById("validacionEnvios").classList.add("invalido");
         document.getElementById("validacionEnvios").innerHTML = "Debe seleccionar un método de envío";
-    } else{
+    } else {
         document.getElementById("validacionEnvios").classList.remove("invalido");
         document.getElementById("validacionEnvios").classList.add("valido");
     }
-    
+
     //chequeo final: que los 7 span con clase "validacion" estén validados y que se haya seleccionado un método de envío.
     let mainValidatedSpans = document.querySelectorAll(".validacion.valido");
-    if(mainValidatedSpans.length = 7  & (shipping1Selected || shipping2Selected || shipping3Selected)){
+    if (mainValidatedSpans.length = 6 & (creditCardSelected && bankTransfSelected) & (shipping1Selected || shipping2Selected || shipping3Selected)) {
         //Sweet Alert
         Swal.fire({
             icon: 'success',
@@ -146,8 +155,9 @@ function mainCheck() {
             text: success,
             showConfirmButton: false,
             footer: '<a href="home.html">Volver al inicio</a>',
-          })
+        })
     }
+    console.log(mainValidatedSpans);
 }
 
 //validación de la información del modal de pago
@@ -162,14 +172,14 @@ function cardCheck() {
     if (creditCardSelected) {
         document.getElementById("modal-de-pago").classList.remove("invalido");
         document.getElementById("modal-de-pago").classList.add("valido");
-        
+
         for (let i = 0; i < creditCardValidationSpans.length; i++) {
             let element = creditCardValidationSpans[i];
-            
+
             let inputID = document.getElementById(element.id + "-input");
             let inputIDValue = document.getElementById(element.id + "-input").value;
             let spanHTML = document.getElementById(element.id);
-            
+
             if (inputIDValue == "") {
                 inputID.classList.remove("is-valid");
                 inputID.classList.add("is-invalid");
@@ -182,18 +192,18 @@ function cardCheck() {
                 spanHTML.classList.add("valido");
             }
         }
-        
+
         let creditCardValidatedSpans = document.querySelectorAll(".validacionTarjeta.valido");
-        if(creditCardValidatedSpans.length == 4){
+        if (creditCardValidatedSpans.length == 4) {
             //método de bootstrap
             $('#modalPago').modal('hide');
         }
-        
+
     } else if (bankTransfSelected) {
         let transfNumber = document.getElementById("cuenta-input");
         let transfNumberSpan = document.getElementById("cuenta");
 
-        if(transfNumber.value == ""){
+        if (transfNumber.value == "") {
             transfNumber.classList.remove("is-valid");
             transfNumber.classList.add("is-invalid");
             transfNumberSpan.classList.add("invalido");
@@ -206,14 +216,12 @@ function cardCheck() {
             //método de bootstrap
             $('#modalPago').modal('hide');
         }
-        
+
     } else {
         document.getElementById("modal-de-pago").classList.remove("valido");
         document.getElementById("modal-de-pago").classList.add("invalido");
         document.getElementById("modal-de-pago").innerHTML = "Por favor seleccione un método de pago";
     }
-
-    
 }
 
 
