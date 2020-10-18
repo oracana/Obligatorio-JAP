@@ -51,6 +51,10 @@
   <meta name="google-signin-client_id"
     content="856555132004-cs2kt6m5g1g9p8gauc4ij2ikmoug5fn4.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  
 </head>
 
 <body>
@@ -117,25 +121,31 @@
             <br>
             <div class="form-group row">
               <div class="col-4">
-                <select class="form-control" name="paises" id="paises"></select>
+                <select class="form-control" name="paises" id="pais-input"></select>
+                <span class="validacion" id="pais"></span>
               </div>
               <div class="col-4">
-                <input type="text" class="form-control" name="dpto" id="dpto" placeholder="Departamento">
+                <input type="text" class="form-control" name="dpto" id="departamento-input" placeholder="Departamento">
+                <span class="validacion" id="departamento"></span>
               </div>
               <div class="col-4">
-                <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad">
+                <input type="text" class="form-control" name="ciudad" id="ciudad-input" placeholder="Ciudad">
+                <span class="validacion" id="ciudad"></span>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-5">
-                <input type="text" class="form-control" placeholder="Calle" name="dirCalle" id="dirCalle" required>
+                <input type="text" class="form-control" placeholder="Calle" name="dirCalle" id="calle-input">
+                <span class="validacion" id="calle"></span>
               </div>
               <div class="col">
-                <input type="number" class="form-control" placeholder="Número de puerta" name="dirNum" id="dirNum"
-                  required>
+                <input type="number" class="form-control" placeholder="Número de puerta" name="dirNum" id="numero-input"
+                  >
+                  <span class="validacion" id="numero"></span>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Esquina" name="dirEsq" id="dirEsq" required>
+                <input type="text" class="form-control" placeholder="Esquina" name="dirEsq" id="esquina-input">
+                <span class="validacion" id="esquina"></span>
               </div>
             </div>
 
@@ -164,6 +174,7 @@
                     <small class="text-muted"> Costo del 5% sobre el subtotal.</small>
                   </label>
                 </div>
+                <span id="validacionEnvios" class="valido"></span>
               </div>
             </div>
           </fieldset>
@@ -172,8 +183,10 @@
         <!-- Forma de pago -->
         <hr>
         <div class="py-5 mb3">
-          <h4 id="opcEnvio">Forma de pago</h4>
-          <p class="text-muted" id="formaPago">Aún no ha seleccionado una forma de pago.</p>
+          <h4 id="opcPago">Método de pago</h4>
+          <p class="text-muted" id="metodo-input">Aún no ha seleccionado una forma de pago.</p>
+          <span id="metodo" class="validacion"></span>
+          <br>
           <button class="btn japbutton" data-toggle="modal" data-target="#modalPago">Seleccionar</button>
         </div>
 
@@ -181,7 +194,7 @@
         <div class="btn-group btn-block" role="group" aria-label="Button group">
           <button type="button" class="btn japbutton" onclick="location.href='./products.html'">Seguir
             comprando</button>
-          <button type="button" class="btn japbutton" onclick="infoCheck()">Finalizar compra</button>
+          <button type="button" class="btn japbutton" onclick="mainCheck()">Finalizar compra</button>
         </div>
 
       </div>
@@ -232,7 +245,9 @@
             </button>
           </div>
           <div class="modal-body">
-
+            <span id="modal-de-pago" class="valido"></span>
+            <br>
+            
             <!-- colapsable de bootstrap -->
             <div id="accordion">
               <div class="card">
@@ -251,12 +266,14 @@
                     <!-- form de tarjeta de crédito -->
                     <div class="form-row">
                       <div class="col-sm-6">
-                        <input class="form-control" type="text" name="titularTarjeta" id="titularTarjeta"
+                        <input class="form-control" type="text" name="titularTarjeta" id="titular-input"
                           placeholder="Titular de la tarjeta">
+                          <span class="validacionTarjeta" id="titular"></span>
                       </div>
                       <div class="col-sm-6">
-                        <input class="form-control" type="number" name="numeroTarjeta" id="numeroTarjeta"
+                        <input class="form-control" type="number" name="numeroTarjeta" id="tarjeta-input"
                           placeholder="Número de la tarjeta">
+                          <span class="validacionTarjeta" id="tarjeta"></span>
                       </div>
                     </div>
                     <br>
@@ -265,10 +282,12 @@
                         <label for="vencTarjeta"><small>Fecha de vencimiento:</small></label>
                       </div>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="vencTarjeta" placeholder="MM/AA">
+                        <input type="text" class="form-control" id="vencimiento-input" placeholder="MM/AA">
+                        <span class="validacionTarjeta" id="vencimiento"></span>
                       </div>
                       <div class="col-sm-4">
-                        <input type="number" class="form-control" id="cvvTarjeta" placeholder="CVV">
+                        <input type="number" class="form-control" id="CVV-input" placeholder="CVV">
+                        <span class="validacionTarjeta" id="CVV"></span>
                       </div>
                     </div>
                   </div>
@@ -286,8 +305,9 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                   <div class="card-body">
-                    <input class="form-control" type="text" name="transferCuenta" id="transferCuenta"
+                    <input class="form-control" type="text" name="transferCuenta" id="cuenta-input"
                       placeholder="Número de cuenta">
+                      <span id="cuenta"></span>
                   </div>
                 </div>
               </div>
@@ -295,8 +315,8 @@
             <!-- termina el colapsable -->
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn japbutton" data-dismiss="modal">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="console.log()">Cancelar</button>
+            <button type="button" class="btn japbutton" onclick="cardCheck()">Guardar</button>
           </div>
         </div>
       </div>
