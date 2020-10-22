@@ -41,7 +41,7 @@ var getJSONData = function(url){
         return result;
     });
 }
-
+const cartQuant = localStorage.getItem("cartQuantity");
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", function(e){
   document.getElementById("username").innerHTML = user;
 
 
-  var cartQuant = localStorage.getItem("cartQuantity");
-  if (cartQuant != undefined){
+  
+  if (cartQuant != null){
     document.getElementById("cantidadArticulos").innerHTML = cartQuant;
   } else {
     getJSONData(CART_INFO_URL).then(function (resultObj) {
@@ -62,7 +62,10 @@ document.addEventListener("DOMContentLoaded", function(e){
             cartQuantities += article.count;
           }
           document.getElementById("cantidadArticulos").innerHTML = cartQuantities;
+          console.log(cartQuantities);
       }
   });
 }
+console.log(cartQuant);
+
 });
