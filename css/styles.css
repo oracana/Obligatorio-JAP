@@ -140,3 +140,8 @@ a.custom-card:hover {
   color: orange;
 }
 
+.dropdown-item:active {
+  color: black;
+  background-color: unset;
+}
+
