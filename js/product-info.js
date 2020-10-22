@@ -61,19 +61,19 @@ function mostrar(comentarios){
 
 //funcion para mostrar imagenes del array levantado en el json
 
-function mostrarImg(imagenes){
-    var galeria = ``;
+// function mostrarImg(imagenes){
+//     var galeria = ``;
 
-    for(i=0; i<imagenes.length; i++){
-        let imagen = imagenes[i];
-        galeria += 
-        `<li class="item"><img src="${imagen}">
-         </li>`;
-    }
+//     for(i=0; i<imagenes.length; i++){
+//         let imagen = imagenes[i];
+//         galeria += 
+//         `<li class="item"><img src="${imagen}">
+//          </li>`;
+//     }
 
-    document.getElementById("productImagesGallery").innerHTML = galeria;
+//     document.getElementById("productImagesGallery").innerHTML = galeria;
 
-}
+// }
 
 //carousel
 function mostrarCarousel(imgs){
@@ -96,8 +96,10 @@ function mostrarRelacionados(array){
                 <h3 class="card-title">${auto.name}</h3>
                 <h4>${auto.cost} ${auto.currency}</h4>
                 <p class="card-text">${auto.description}</p>
+                <div class="card-foot">
                 <p class="card-text"><small class="text-muted">Vendidos: ${auto.soldCount}</small></p>
                 <a href="product-info.html" class="btn btn-primary">Ver producto</a>
+                </div>
               </div>
           </div>
         `
@@ -147,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             productCurrencyHTML.innerHTML = product.currency;
             
             //Muestro las imagenes en forma de galería
-            mostrarImg(product.images);
+            // mostrarImg(product.images);
             mostrarCarousel(product.images);
             mostrarRelacionados(product.relatedProducts);
 

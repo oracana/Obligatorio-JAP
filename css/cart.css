@@ -7,6 +7,9 @@
     background-color: #f2267b;
 }
 
+.japbutton:focus{
+    box-shadow: 0 0 0 0.2rem #f2267b;
+}
 .japbutton:hover{
     color: white;
     background-color: #d61c6c;

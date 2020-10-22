@@ -5,6 +5,8 @@ var success = "";
 //genero un array con todos los span que se ingresan bajo los input (main), para la validacion
 var mainValidationSpans = document.querySelectorAll(".validacion");
 
+
+
 //idem para los span de los input en el modal
 var creditCardValidationSpans = document.querySelectorAll(".validacionTarjeta");
 
@@ -16,7 +18,11 @@ function showCart(array) {
     if (array.length == 0) {
         html = `
         <tr>
-            <td class="align-middle align-center" colspan="6" style="text-align:center;"><p class="align-middle alert-warning py-3 mt-3">El carrito está vacío</p></td>
+            <td class="align-middle align-center" colspan="6" style="text-align:center;"><p class="align-middle alert-warning py-3 mt-3">
+            El carrito está vacío
+            <br>
+            <a href='/products.html'>¿Volver al listado de productos?</a>
+            </p></td>
         </tr>
         `;
     } else {
@@ -145,19 +151,29 @@ function mainCheck() {
         document.getElementById("validacionEnvios").classList.add("valido");
     }
 
-    //chequeo final: que los 7 span con clase "validacion" estén validados y que se haya seleccionado un método de envío.
-    let mainValidatedSpans = document.querySelectorAll(".validacion.valido");
-    if (mainValidatedSpans.length = 6 & (creditCardSelected && bankTransfSelected) & (shipping1Selected || shipping2Selected || shipping3Selected)) {
-        //Sweet Alert
+    //chequeo final: que el carrito no este vacío
+    // a partir de ello: los 7 span con clase "validacion" estén validados y que se haya seleccionado un método de envío.
+    if(articles.length != 0){
+        var mainValidatedSpans = document.querySelectorAll(".validacion.valido");
+        if (mainValidatedSpans.length = 6 && (creditCardSelected || bankTransfSelected) && (shipping1Selected || shipping2Selected || shipping3Selected)) {
+            //Sweet Alert
+            Swal.fire({
+                icon: 'success',
+                title: 'Felicidades',
+                text: success,
+                showConfirmButton: false,
+                footer: '<a href="home.html">Volver al inicio</a>',
+            })
+        }
+    } else{
         Swal.fire({
-            icon: 'success',
-            title: 'Felicidades',
-            text: success,
+            icon: 'error',
+            text: 'No tienes elementos en el carrito',
             showConfirmButton: false,
-            footer: '<a href="home.html">Volver al inicio</a>',
+            footer: '<a href="/products.html">Volver al listado de productos</a>',
         })
     }
-    console.log(mainValidatedSpans);
+        
 }
 
 //validación de la información del modal de pago
