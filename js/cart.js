@@ -214,6 +214,7 @@ function cardCheck() {
             //método de bootstrap
             $('#modalPago').modal('hide');
         }
+        document.getElementById("metodo-input").innerHTML = "Tarjeta de crédito";
 
     } else if (bankTransfSelected) {
         let transfNumber = document.getElementById("cuenta-input");
@@ -232,7 +233,8 @@ function cardCheck() {
             //método de bootstrap
             $('#modalPago').modal('hide');
         }
-
+        document.getElementById("metodo-input").innerHTML = "Transferencia bancaria";
+        
     } else {
         document.getElementById("modal-de-pago").classList.remove("valido");
         document.getElementById("modal-de-pago").classList.add("invalido");
@@ -295,12 +297,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     //seleccion de metodo de pago
-    document.getElementById("formaDePago1").addEventListener("click", function () {
-        document.getElementById("metodo-input").innerHTML = "Tarjeta de crédito";
-    });
-    document.getElementById("formaDePago2").addEventListener("click", function () {
-        document.getElementById("metodo-input").innerHTML = "Transferencia bancaria";
-    });
+    // document.getElementById("formaDePago1").addEventListener("click", function () {
+    //     document.getElementById("metodo-input").innerHTML = "Tarjeta de crédito";
+    // });
+    // document.getElementById("formaDePago2").addEventListener("click", function () {
+    //     document.getElementById("metodo-input").innerHTML = "Transferencia bancaria";
+    // });
 
 });
 
