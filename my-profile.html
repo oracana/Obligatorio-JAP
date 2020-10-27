@@ -12,6 +12,11 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
+  <!--font awesome -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/css/my-profile.css">
+
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -51,7 +56,8 @@
           <strong id="username"></strong>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button" onclick="location.href='cart.html'">Mi carrito <span class="badge badge-pill badge-danger" id="cantidadArticulos"></span></button>
+          <button class="dropdown-item" type="button" onclick="location.href='cart.html'">Mi carrito <span
+              class="badge badge-pill badge-danger" id="cantidadArticulos"></span></button>
           <button class="dropdown-item" type="button" onclick="location.href='my-profile.html'">Mi perfil</button>
           <div class="dropdown-divider"></div>
           <button class="dropdown-item" type="button" onclick="signOut();">Cerrar sesión</button>
@@ -60,40 +66,90 @@
     </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <div class="text-center p-4">
+      <h2>Mi perfil</h2>
+      <p class="lead">Encontrarás aquí toda tu información de usuario.</p>
+      <img src="./img/divider.png" style="width: 100%;">
     </div>
-  </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+
+    <div id="perfil-datos" class="row">
+
+      <div class="text-center col-sm-4 col-xs-12">
+        <div id="alerta-vacio" class="alert-warning mt-3">
+          <i class="fas fa-exclamation-circle"></i>
+          Parece que aún no has completado tus datos
+        </div>
+        <img class="rounded" src="/img/user-empty.png" alt="User Image">
+      </div>
+
+      <div class="col-sm-8 col-xs-12">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="input-nombres">Nombres</label>
+            <input type="text" class="form-control" id="input-nombres">
+            <p class="inputs-completos" id="input-nombres-completo"></p>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="input-apellidos">Apellidos</label>
+            <input type="text" class="form-control" id="input-apellidos">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label for="input-edad">Edad</label>
+            <input type="number" class="form-control" id="input-edad">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="input-telefono">Teléfono</label>
+            <input type="number" class="form-control" id="input-telefono">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="input-email">E-mail</label>
+            <input type="email" class="form-control" id="input-email">
+          </div>
+        </div>
+
+        <div id="button-div" class="mt-5 text-right align-center">
+          <button id="boton-cancelar" class="btn btn-secondary">
+            Cancelar
+          </button>
+          <button id="boton-principal" class="btn japbutton">
+            Guardar datos
+          </button>
+        </div>
+
+      </div>
+
     </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+
+
+    <footer class="text-muted bg-light">
+      <div class="container">
+        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+        <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      </div>
+    </footer>
+    <div class="alert fade alert-success" role="alert" id="alertResult">
+      <span id="resultSpan"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/my-profile.js"></script>
-  <script src="js/login-google.js"></script>
-  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/my-profile.js"></script>
+    <script src="js/login-google.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 </body>
 
 </html>

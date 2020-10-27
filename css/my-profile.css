@@ -1,0 +1,20 @@
+#perfil-datos{
+    border: 1px solid #f2267b;
+    padding: 2em;
+}
+
+.japbutton{
+    color: white !important;
+    background-color: #f2267b !important;
+}
+
+.japbutton:focus{
+    box-shadow: 0 0 0 0.2rem #f2267b !important;
+}
+.japbutton:hover{
+    color: white;
+    background-color: #d61c6c !important;
+}
+#alerta-vacio{
+    display:none;
+}
