@@ -18,3 +18,7 @@
 #alerta-vacio{
     display:none;
 }
+
+#perfil-datos img{
+    width: 100%;
+}

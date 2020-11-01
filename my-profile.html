@@ -41,28 +41,44 @@
   <meta name="google-signin-client_id"
     content="856555132004-cs2kt6m5g1g9p8gauc4ij2ikmoug5fn4.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <script async src="https://imgbb.com/upload.js" data-palette="grey" data-auto-insert="html-embed-thumbnail"></script>
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="home.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <strong id="username"></strong>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button" onclick="location.href='cart.html'">Mi carrito <span
-              class="badge badge-pill badge-danger" id="cantidadArticulos"></span></button>
-          <button class="dropdown-item" type="button" onclick="location.href='my-profile.html'">Mi perfil</button>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item" type="button" onclick="signOut();">Cerrar sesión</button>
-        </div>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="home.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <strong id="username"></strong>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button" onclick="location.href='cart.html'">Mi carrito <span class="badge badge-pill badge-danger" id="cantidadArticulos"></span></button>
+              <button class="dropdown-item" type="button" onclick="location.href='my-profile.html'">Mi perfil</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" type="button" onclick="signOut();">Cerrar sesión</button>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </nav>
   <div class="container p-5">
@@ -77,9 +93,12 @@
       <div class="text-center col-sm-4 col-xs-12">
         <div id="alerta-vacio" class="alert-warning mt-3">
           <i class="fas fa-exclamation-circle"></i>
-          Parece que aún no has completado tus datos
-        </div>
-        <img class="rounded" src="/img/user-empty.png" alt="User Image">
+            Parece que aún no has completado tus datos
+          </div>
+          
+
+        <img id="user-img" class="rounded" src="/img/user-empty.png" alt="User Image">
+        <input type="file" name="user-img-input" id="user-img-input" accept="image/*">
       </div>
 
       <div class="col-sm-8 col-xs-12">
@@ -143,6 +162,7 @@
         <div></div>
       </div>
     </div>
+    
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/dropzone.js"></script>

@@ -58,22 +58,25 @@ function showCategoriesList(){
             ){
 
         htmlContentToAppend += `
-        <a href="product-info.html" class="list-group-item list-group-item-action">
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + product.imgSrc + `" alt="` + product.desc + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ product.name + ` - ` + product.cost + ` ` + product.currency + `</h4>
-                        <small class="muted">` + product.soldCount + ` artículos vendidos </small>
+        <div class="col-sm-6 col-xs-12 product-info-container">
+            <a href="product-info.html" class="product-info-link">
+                <div class="row">
+                    <div class="col-md-5 product-img-container">
+                        <img src="` + product.imgSrc + `" alt="` + product.desc + `">
                     </div>
-                    <p class="mb-1">` + product.description + `</p>
+                    <div class="col-md-7">
+                        <div>
+                            <h4 class="mb-1">`+ product.name + `</h4> 
+                            <h4 class="mb-1 bold">` + product.cost + ` ` + product.currency + `</h4>
+                            <br>
+                            <small class="muted">` + product.soldCount + ` artículos vendidos </small>
+                        </div>
+                    </div>
+                    
+                    <p class="mt-4 mb-1">` + product.description + `</p>
                 </div>
-            </div>
+            </a>
         </div>
-        </a>
         `
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;

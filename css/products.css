@@ -1,0 +1,27 @@
+#cat-list-container img{
+    width: 100%;
+}
+.product-info-link{
+    color: unset !important;
+    text-decoration: none;
+    
+}
+.product-info-link:hover{
+    color: unset !important;
+    text-decoration: none !important;
+}
+.product-info-container{
+    padding: 1em;
+}
+
+.product-info-link .row{
+border: 1px solid lightgray;
+margin: auto;
+padding: 1em;
+min-height: 17em;
+}
+
+.product-img-container{
+    margin-top: auto;
+    margin-bottom: auto;
+}

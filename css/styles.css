@@ -145,3 +145,45 @@ a.custom-card:hover {
   background-color: unset;
 }
 
+#dropdownMenu2{
+  background-color: #343a40!important;
+  border: 0px;
+}
+
+.navbar {
+  padding: .3rem 1rem;
+}
+
+@media (min-width: 992px){
+#navbarToggler .navbar-nav{
+  width: 100% !important;
+  justify-content: space-around;
+}
+}
+
+@media (max-width: 991px){
+  #dropdownMenu2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .dropdown-toggle::after{
+    margin-top: 12px;
+  }
+  .dropdown-menu{
+    background-color: #343a40!important;
+    border: 0px;
+  }
+  .dropdown-item{
+    color: rgba(255,255,255,.5) !important;
+  }
+  .dropdown-item:hover{
+    color:white;
+  }
+  .dropdown-item .active{
+    color: white;
+  }
+  .dropdown-divider{
+    color: rgba(255,255,255,.5);
+  }
+  }
