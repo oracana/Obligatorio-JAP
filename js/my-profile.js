@@ -47,20 +47,13 @@ inputImg.addEventListener('change', function(e){
     var form = new FormData();
     form.append("image", imgUploaded)
     console.log(form);
-    // const res = axios.post(IMGBB_API_URL, form);
-    //hacemos una request de tipo post al servidor de imgbb
     
+
+    //hacemos una XMLHttpRequest de tipo post al servidor de imgbb
     request.open("POST", IMGBB_API_URL);
     request.send(form);
-    // .then( response=>response)
-    // .then(datos=> { //obtenemos una nueva promesa, pero los datos ya están como json.
-    //    console.log(datos) 
-    // })
-    // .catch( error => alert("Hubo un error: " + error));
+    
     console.log(request);
-    // var theURLwewant = request.getAllResponseHeaders();
-    // console.log(request.readyState);
-    // request.onreadystatechange = console.log(request.response);
     
     request.onreadystatechange = function () {
         // In local files, status is 0 upon success in Mozilla Firefox
@@ -74,7 +67,7 @@ inputImg.addEventListener('change', function(e){
             imgNewUrl = resultObj.data.url;
             showImg.src = imgNewUrl;
           } else {
-            // Oh no! There has been an error with the request!
+            console.log('Oh no! There has been an error with the request!');
           }
         }
       };
