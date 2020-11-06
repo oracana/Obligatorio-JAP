@@ -90,18 +90,21 @@
 
     <div id="perfil-datos" class="row">
 
-      <div class="text-center col-sm-4 col-xs-12">
+      <div class="text-center col-md-4 col-xs-12">
         <div id="alerta-vacio" class="alert-warning mt-3">
           <i class="fas fa-exclamation-circle"></i>
             Parece que aún no has completado tus datos
           </div>
           
 
-        <img id="user-img" class="rounded" src="/img/user-empty.png" alt="User Image">
+        <img id="user-img" src="/img/user-empty.png" alt="User Image" crossorigin="anonymous">
+        <br>
+        <label for="user-img-input" class="btn japbutton mt-3">Subir una nueva imagen</label>
         <input type="file" name="user-img-input" id="user-img-input" accept="image/*">
       </div>
 
-      <div class="col-sm-8 col-xs-12">
+      <div class="col-md-8 col-xs-12">
+        <div class="campos-perfil align-middle">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="input-nombres">Nombres</label>
@@ -127,20 +130,20 @@
             <input type="email" class="form-control" id="input-email">
           </div>
         </div>
+      
 
         <div id="button-div" class="mt-5 text-right align-center">
-          <button id="boton-cancelar" class="btn btn-secondary">
-            Cancelar
+          <button id="boton-borrar" class="btn btn-secondary">
+            Borrar datos
           </button>
           <button id="boton-principal" class="btn japbutton">
             Guardar datos
           </button>
         </div>
-
+      </div>
       </div>
 
     </div>
-
 
     <footer class="text-muted bg-light">
       <div class="container">

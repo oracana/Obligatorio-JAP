@@ -175,10 +175,12 @@ a.custom-card:hover {
     border: 0px;
   }
   .dropdown-item{
-    color: rgba(255,255,255,.5) !important;
+    color: rgba(255,255,255,.5);
+    transition: color .5s;
   }
   .dropdown-item:hover{
-    color:white;
+    color: white;
+    background-color: #343a40;
   }
   .dropdown-item .active{
     color: white;

@@ -8,9 +8,10 @@ var inputImg = document.getElementById("user-img-input");
 
 var showImg = document.getElementById("user-img");
 var imgNewUrl;
+var fullImage;
 //tambien quiero poner en una variable a los botones que van a tener funcionalidad
 var saveBtn = document.getElementById("boton-principal");
-var cancelBtn = document.getElementById("boton-cancelar");
+var eraseBtn = document.getElementById("boton-borrar");
 var newData = {};
 
 
@@ -21,24 +22,34 @@ function saveData(){
     newData.phone = inputPhone.value;
     newData.mail = inputMail.value;
     newData.img = showImg.src;
+    newData.img64 = fullImage;
 
     console.log(newData);
     localStorage.setItem("localProfileData", JSON.stringify(newData));
 }
 
-function cancel(){
-    inputFirstName.value == "";
-    inputLastName.value == "";
-    inputAge.value == "";
-    inputPhone.value == "";
-    inputMail.value == "";
+function erase(){
+    inputFirstName.value = "";
+    inputLastName.value = "";
+    inputAge.value = "";
+    inputPhone.value = "";
+    inputMail.value = "";
+    showImg.src = "/img/user-empty.png";
+
+    saveData();
 }
 
-saveBtn.addEventListener("click", saveData);
-cancelBtn.addEventListener("click", function(){
-    cancel();
+saveBtn.addEventListener("click", function(){
+  saveData();
+  alert('Tus datos han sido guardados con éxito');
+  setTimeout(location.href = "/my-profile.html", 5000);
+});
+
+eraseBtn.addEventListener("click", function(){
+    erase();
     location.href = "/my-profile.html";
 });
+
 //intentando subir la imagen al servidor de imgBB
 inputImg.addEventListener('change', function(e){
     //esta es la url a la que enviaremos la imagen
@@ -67,10 +78,24 @@ inputImg.addEventListener('change', function(e){
             // luego de obtener una respuesta exitosa, parseamos la información de la respuesta y tomamos la url de la imagen ya pública.
             resultObj = request.response;
             resultObj = JSON.parse(resultObj);
-            
+
             imgNewUrl = resultObj.data.url;
             //ya que estamos, en la misma función podemos mostrar la imagen.
             showImg.src = imgNewUrl;
+
+              //extra, para conseguir esta imagen codificada en base 64
+                let canvas = document.createElement('canvas');
+                let ctx = canvas.getContext('2d');
+                // Set width and height
+                canvas.width = showImg.width;
+                canvas.height = showImg.height;
+                // Draw the image
+                ctx.drawImage(showImg, 0, 0, showImg.width, showImg.height);
+                let dataUrl = canvas.toDataURL('image');
+                
+                fullImage = dataUrl;
+              //
+
           } else {
             console.log('Oh no! There has been an error with the request!');
           }
@@ -95,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         inputAge.value = profileData.age
         inputPhone.value = profileData.phone;
         inputMail.value =  profileData.mail;
-        showImg.src = profileData.img;
+        showImg.src = profileData.img64;
     } else{
         document.getElementById("alerta-vacio").style.display = "block";
         showImg.src = "/img/user-empty.png";
