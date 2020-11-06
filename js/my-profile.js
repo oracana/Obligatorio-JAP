@@ -24,7 +24,6 @@ function saveData(){
     newData.img = showImg.src;
     newData.img64 = fullImage;
 
-    console.log(newData);
     localStorage.setItem("localProfileData", JSON.stringify(newData));
 }
 
@@ -91,7 +90,7 @@ inputImg.addEventListener('change', function(e){
                 canvas.height = showImg.height;
                 // Draw the image
                 ctx.drawImage(showImg, 0, 0, showImg.width, showImg.height);
-                let dataUrl = canvas.toDataURL('image');
+                let dataUrl = canvas.toDataURL('image/png');
                 
                 fullImage = dataUrl;
               //
@@ -114,13 +113,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if(profileData != null){
         document.getElementById("alerta-vacio").style.display = "none";
 
-        console.log(profileData);
         inputFirstName.value = profileData.firstName;
         inputLastName.value = profileData.lastName;
         inputAge.value = profileData.age
         inputPhone.value = profileData.phone;
         inputMail.value =  profileData.mail;
-        showImg.src = profileData.img64;
+        showImg.src = profileData.img;
+        //tambien se puede cargar la imagen codificada (img64). el problema es que es restrictivo al formato determinado.
+        //en este caso el formato es png. Funciona. Dejo el código comentado a continuación para hacer la prueba:
+        //showImg.src = profileData.img64;
     } else{
         document.getElementById("alerta-vacio").style.display = "block";
         showImg.src = "/img/user-empty.png";

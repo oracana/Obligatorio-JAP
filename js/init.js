@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             cartQuantities += article.count;
           }
           document.getElementById("cantidadArticulos").innerHTML = cartQuantities;
-          console.log(cartQuantities);
       }
   });
 }
