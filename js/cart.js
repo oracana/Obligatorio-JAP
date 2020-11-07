@@ -296,13 +296,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showTotal(articles);
     });
 
-    //seleccion de metodo de pago
-    // document.getElementById("formaDePago1").addEventListener("click", function () {
-    //     document.getElementById("metodo-input").innerHTML = "Tarjeta de crédito";
-    // });
-    // document.getElementById("formaDePago2").addEventListener("click", function () {
-    //     document.getElementById("metodo-input").innerHTML = "Transferencia bancaria";
-    // });
-
 });
 
