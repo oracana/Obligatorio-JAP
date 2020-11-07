@@ -28,20 +28,22 @@ function saveData(){
 }
 
 function erase(){
-    inputFirstName.value = "";
-    inputLastName.value = "";
-    inputAge.value = "";
-    inputPhone.value = "";
-    inputMail.value = "";
     showImg.src = "/img/user-empty.png";
-
-    saveData();
+    localStorage.removeItem("localProfileData");
 }
 
 saveBtn.addEventListener("click", function(){
   saveData();
-  alert('Tus datos han sido guardados con éxito');
-  setTimeout(location.href = "/my-profile.html", 5000);
+  
+  Swal.fire({
+    position: 'top',
+    icon: 'success',
+    title: 'Tus datos han sido guardados con éxito',
+    showConfirmButton: false,
+    timer: 1500
+  })
+
+  setTimeout(function(){location.href = "/my-profile.html"}, 1500);
 });
 
 eraseBtn.addEventListener("click", function(){
@@ -108,7 +110,6 @@ inputImg.addEventListener('change', function(e){
 document.addEventListener("DOMContentLoaded", function (e) {
     var profileData = localStorage.getItem("localProfileData");
     profileData = JSON.parse(profileData);
-    
     
     if(profileData != null){
         document.getElementById("alerta-vacio").style.display = "none";

@@ -43,6 +43,9 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   <script async src="https://imgbb.com/upload.js" data-palette="grey" data-auto-insert="html-embed-thumbnail"></script>
+
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -91,12 +94,6 @@
     <div id="perfil-datos" class="row">
 
       <div class="text-center col-md-4 col-xs-12">
-        <div id="alerta-vacio" class="alert-warning mt-3">
-          <i class="fas fa-exclamation-circle"></i>
-            Parece que aún no has completado tus datos
-          </div>
-          
-
         <img id="user-img" src="/img/user-empty.png" alt="User Image" crossorigin="anonymous">
         <br>
         <label for="user-img-input" class="btn japbutton mt-3">Subir una nueva imagen</label>
@@ -104,7 +101,12 @@
       </div>
 
       <div class="col-md-8 col-xs-12">
-        <div class="campos-perfil align-middle">
+        <div id="alerta-vacio" class="alert-warning mt-2 p-3">
+          <i class="fas fa-exclamation-circle"></i>
+            Parece que aún no has completado tus datos
+          </div>
+
+        <div class="campos-perfil align-middle">   
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="input-nombres">Nombres</label>

@@ -1,6 +1,10 @@
 #perfil-datos{
     border: 1px solid #f2267b;
     padding: 2em;
+    margin-bottom: 3em;
+}
+.campos-perfil{
+    padding-top: 3em;
 }
 
 .japbutton{

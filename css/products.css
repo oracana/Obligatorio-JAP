@@ -1,3 +1,7 @@
+#divider{
+    width: 70%;
+}
+
 #cat-list-container img{
     width: 100%;
 }
@@ -24,4 +28,32 @@ min-height: 17em;
 .product-img-container{
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.btn-group{
+    width: 100%;
+}
+
+#busquedatxt{
+    width: 50%;
+}
+
+@media(max-width:786px){
+    .btn-group.btn-group-toggle{
+        display: grid;
+        width: 80%;
+        margin: 0 auto;
+    }
+    #busquedatxt{
+        width: 100%;
+        text-align: center;
+    }
+    .product-info-link .row{
+        min-height: 25em;
+    }
+
+    /* main separator */
+    #divider{
+        width: 100%;
+    }
 }
