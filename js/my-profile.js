@@ -28,7 +28,7 @@ function saveData(){
 }
 
 function erase(){
-    showImg.src = "/img/user-empty.png";
+    showImg.src = "img/user-empty.png";
     localStorage.removeItem("localProfileData");
 }
 
@@ -43,12 +43,12 @@ saveBtn.addEventListener("click", function(){
     timer: 1500
   })
 
-  setTimeout(function(){location.href = "/my-profile.html"}, 1500);
+  setTimeout(function(){location.href = "my-profile.html"}, 1500);
 });
 
 eraseBtn.addEventListener("click", function(){
     erase();
-    location.href = "/my-profile.html";
+    location.href = "my-profile.html";
 });
 
 //intentando subir la imagen al servidor de imgBB
@@ -125,6 +125,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         //showImg.src = profileData.img64;
     } else{
         document.getElementById("alerta-vacio").style.display = "block";
-        showImg.src = "/img/user-empty.png";
+        showImg.src = "img/user-empty.png";
     }
 });
