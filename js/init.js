@@ -47,7 +47,9 @@ const cartQuant = localStorage.getItem("cartQuantity");
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
   var user= localStorage.getItem("usuario"); 
-  document.getElementById("username").innerHTML = user;
+  if(user != null){
+    document.getElementById("username").innerHTML = user;
+  }
 
 
   
